@@ -6,7 +6,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SVGWave />
+        <SVGWave 
+          strokeWidth="5"
+        />
       </div>
     );
   }
