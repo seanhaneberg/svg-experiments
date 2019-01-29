@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 
+/**
+ * Properties:
+ *  - number of cycles
+ *  - offset
+ *  - color
+ *  - amplitude
+ *  - cycle-width
+ */
+
 class SVGWave extends Component {
   render() {
     const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 1;
