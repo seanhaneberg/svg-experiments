@@ -17,9 +17,22 @@ class SVGWave extends Component {
     const startX = 0;
     const startY = height / 2;
     const periodWidth = this.props.periodWidth ? this.props.periodWidth : 80;
-    // const maxY = height;
-    // const minY = 0;
-    const dProp = "M " + startX + " " + startY + " C " + periodWidth / 2 + " 10, " + periodWidth / 2 + " 10, " + startX + periodWidth + " " + startY + " S " + periodWidth * 2 + " " + periodWidth * 2 + ", " + periodWidth * 2 + " " + startY;
+    const dx1 = startX;
+    const dy1 = 20;
+    const dx = dx1 + periodWidth; // Destination
+    const dy = startY; // Destination
+    const dx2 = dx;
+    const dy2 = dy1;
+    const dProp =
+      `M
+      ${startX} ${startY}
+      C
+      ${dx1} ${dy1}
+      ${dx2} ${dy2}
+      ${dx} ${dy}
+      S
+      ${dx * 2} ${startY + (startY - dy1)}
+      ${dx * 2} ${startY}`;
     return (
       <svg height={height} width={width}>
         <path
