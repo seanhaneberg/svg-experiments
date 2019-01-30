@@ -16,9 +16,10 @@ class SVGWave extends Component {
     const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 1;
     const startX = 0;
     const startY = height / 2;
+    const amplitude = this.props.amplitude ? this.props.amplitude : 50;
     const periodWidth = this.props.periodWidth ? this.props.periodWidth : 80;
     const dx1 = startX;
-    const dy1 = 20;
+    const dy1 = startY + amplitude;
     const dx = dx1 + periodWidth; // Destination
     const dy = startY; // Destination
     const dx2 = dx;

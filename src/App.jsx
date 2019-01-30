@@ -10,8 +10,8 @@ class App extends Component {
     this.state = { strokeWidth: 1 };
   }
 
-  handleHeightChange(val) {
-    this.setState({ height: val });
+  handleAmplitudeChange(val) {
+    this.setState({ amplitude: val });
   }
 
   handleWidthChange(val) {
@@ -28,7 +28,7 @@ class App extends Component {
         strokeWidth={this.state.strokeWidth}
         periodWidth={this.state.periodWidth}
         width={this.state.width}
-        height={this.state.height}
+        amplitude={this.state.amplitude}
         />;
     return (
       <div className="App">
@@ -39,7 +39,7 @@ class App extends Component {
           <Slider onChange={this.handleStrokeChange.bind(this)} />
           <br></br>
           Height
-          <Slider onChange={this.handleHeightChange.bind(this)} />
+          <Slider onChange={this.handleAmplitudeChange.bind(this)} />
           <br></br>
           Width
           <Slider onChange={this.handleWidthChange.bind(this)} />
