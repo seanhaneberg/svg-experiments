@@ -5,7 +5,7 @@ import './App.css';
 import 'rc-slider/assets/index.css';
 
 const minStroke = 1;
-const maxStroke = 10;
+const maxStroke = 5;
 
 const minPeriodWidth = 5;
 const maxPeriodWidth = 100;
