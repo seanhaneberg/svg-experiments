@@ -4,10 +4,23 @@ import SVGWave from './SVGWave';
 import './App.css';
 import 'rc-slider/assets/index.css';
 
+const minStroke = 1;
+const maxStroke = 5;
+
+const minPeriodWidth = 5;
+const maxPeriodWidth = 100;
+
+const minAmplitude = 5;
+const maxAmplitude = 100;
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { strokeWidth: 1 };
+    this.state = {
+      strokeWidth: minStroke,
+      periodWidth: minPeriodWidth,
+      amplitude: minAmplitude,
+    };
   }
 
   handleAmplitudeChange(val) {
@@ -29,20 +42,32 @@ class App extends Component {
         periodWidth={this.state.periodWidth}
         width={this.state.width}
         amplitude={this.state.amplitude}
-        />;
+      />;
     return (
       <div className="App">
         {svg}
         <div style={{ padding: 50 }}>
           <br></br>
           Stroke
-          <Slider onChange={this.handleStrokeChange.bind(this)} />
+          <Slider
+            min={minStroke}
+            max={maxStroke}
+            onChange={this.handleStrokeChange.bind(this)}
+          />
           <br></br>
           Height
-          <Slider onChange={this.handleAmplitudeChange.bind(this)} />
+          <Slider
+            min={minAmplitude}
+            max={maxAmplitude}
+            onChange={this.handleAmplitudeChange.bind(this)}
+          />
           <br></br>
           Width
-          <Slider onChange={this.handleWidthChange.bind(this)} />
+          <Slider
+            min={minPeriodWidth}
+            max={maxPeriodWidth}
+            onChange={this.handleWidthChange.bind(this)}
+          />
         </div>
       </div>
     );
