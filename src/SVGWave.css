@@ -1,0 +1,28 @@
+.slider-pane {
+  float: left;
+  padding: 5px;
+}
+
+.data-pane {
+  float: right;
+  padding: 5px;
+}
+.content-pane {
+  float: none;
+  padding: 5px;
+}
+
+.container {
+
+}
+/**
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+*/

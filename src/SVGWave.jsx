@@ -1,13 +1,47 @@
 import React, { Component } from 'react';
+import Slider from 'rc-slider';
+import './SVGWave.css'
+import 'rc-slider/assets/index.css';
+
+const minStroke = 2;
+const maxStroke = 10;
+
+const minPeriodWidth = 100;
+const maxPeriodWidth = 250;
+
+const minAmplitude = 100;
+const maxAmplitude = 200;
 
 class SVGWave extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      strokeWidth: minStroke,
+      periodWidth: minPeriodWidth,
+      amplitude: minAmplitude,
+    };
+  }
+
+  handleAmplitudeChange(val) {
+    this.setState({ amplitude: val });
+  }
+
+  handleWidthChange(val) {
+    this.setState({ periodWidth: val });
+  }
+
+  handleStrokeChange(val) {
+    this.setState({ strokeWidth: val });
+  }
   render() {
-    // Use the same padding for x & y
-    const amplitude = this.props.amplitude ? this.props.amplitude : 50;
-    const padding = this.props.padding ? this.props.padding : 2;
-    const height = amplitude * 2 + (padding * 2);
-    const periodWidth = this.props.periodWidth ? this.props.periodWidth : 80;
-    const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 1;
+    const padding = 2;
+    const textHeight = 30;
+
+    const amplitude = this.state.amplitude;
+    const height = amplitude * 2 + (padding * 2) + textHeight;
+    const periodWidth = this.state.periodWidth;
+    const strokeWidth = this.state.strokeWidth;
     const width = (periodWidth * 2) + (padding * 2) + (strokeWidth * 2);
     const startX = 0 + padding + strokeWidth;
     const startY = height / 2;
@@ -35,16 +69,65 @@ class SVGWave extends Component {
       ${dx + periodWidth} ${startY + (startY - dy1)}
       ${dx + periodWidth} ${startY}`;
     return (
-      <svg height={height} width={width}>
-        <rect height={height} width={width} stoke-width="2" stroke="#afafaf" fillOpacity={0.0}/>
-        <path
-          d={dProp}
-          stroke="black"
-          strokeWidth={strokeWidth}
-          strokeLinecap="round"
-          fill="transparent"
-        />
-      </svg>
+      // Need to return:
+      //  - A title
+      //  - sliders
+      //  - metadata readouts
+      //  - graphical framing elements
+      //  - content
+      <div className="container">
+        <div className="slider-pane">
+        Stroke
+          <Slider
+            min={minStroke}
+            max={maxStroke}
+            onChange={this.handleStrokeChange.bind(this)}
+          />
+          <br></br>
+          Height
+          <Slider
+            min={minAmplitude}
+            max={maxAmplitude}
+            onChange={this.handleAmplitudeChange.bind(this)}
+          />
+          <br></br>
+          Width
+          <Slider
+            min={minPeriodWidth}
+            max={maxPeriodWidth}
+            onChange={this.handleWidthChange.bind(this)}
+          />
+          SLIDERS
+        </div>
+        <div className="data-pane">
+          DATA
+        </div>
+        <div className="content-pane">
+          CONTENT
+        </div>
+        <svg height={height} width={width}>
+          <text
+            x={20}
+            y={textHeight / 2}
+          >
+            SVGWave
+        </text>
+          <rect
+            height={height - textHeight}
+            width={width}
+            stoke-width="2"
+            stroke="#afafaf"
+            fillOpacity={0.0}
+          />
+          <path
+            d={dProp}
+            stroke="black"
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            fill="transparent"
+          />
+        </svg>
+      </div>
     );
   }
 }
