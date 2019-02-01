@@ -7,7 +7,7 @@ const minStroke = 2;
 const maxStroke = 10;
 
 const minPeriodWidth = 100;
-const maxPeriodWidth = 250;
+const maxPeriodWidth = 200;
 
 const minAmplitude = 100;
 const maxAmplitude = 200;
@@ -36,10 +36,9 @@ class SVGWave extends Component {
   }
   render() {
     const padding = 2;
-    const textHeight = 30;
 
     const amplitude = this.state.amplitude;
-    const height = amplitude * 2 + (padding * 2) + textHeight;
+    const height = amplitude * 2 + (padding * 2);
     const periodWidth = this.state.periodWidth;
     const strokeWidth = this.state.strokeWidth;
     const width = (periodWidth * 2) + (padding * 2) + (strokeWidth * 2);
@@ -77,7 +76,7 @@ class SVGWave extends Component {
       //  - content
       <div className="container">
         <div className="slider-pane">
-        Stroke
+          Stroke
           <Slider
             min={minStroke}
             max={maxStroke}
@@ -97,36 +96,27 @@ class SVGWave extends Component {
             max={maxPeriodWidth}
             onChange={this.handleWidthChange.bind(this)}
           />
-          SLIDERS
         </div>
         <div className="data-pane">
-          DATA
         </div>
         <div className="content-pane">
-          CONTENT
+          <svg height={height} width={width}>
+            <rect
+              height={height}
+              width={width}
+              stoke-width="2"
+              stroke="#afafaf"
+              fillOpacity={0.0}
+            />
+            <path
+              d={dProp}
+              stroke="black"
+              strokeWidth={strokeWidth}
+              strokeLinecap="round"
+              fill="transparent"
+            />
+          </svg>
         </div>
-        <svg height={height} width={width}>
-          <text
-            x={20}
-            y={textHeight / 2}
-          >
-            SVGWave
-        </text>
-          <rect
-            height={height - textHeight}
-            width={width}
-            stoke-width="2"
-            stroke="#afafaf"
-            fillOpacity={0.0}
-          />
-          <path
-            d={dProp}
-            stroke="black"
-            strokeWidth={strokeWidth}
-            strokeLinecap="round"
-            fill="transparent"
-          />
-        </svg>
       </div>
     );
   }

@@ -1,15 +1,18 @@
 .slider-pane {
   float: left;
   padding: 5px;
+  width: 30%;
 }
 
 .data-pane {
   float: right;
   padding: 5px;
+  width: 25%;
 }
 .content-pane {
-  float: none;
+  float: left;
   padding: 5px;
+  width: 30%;
 }
 
 .container {
