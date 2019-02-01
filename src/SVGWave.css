@@ -1,0 +1,38 @@
+.slider-pane {
+  float: left;
+  padding: 5px;
+  width: 30%;
+  text-align: right;
+  color: #777777;
+  font-size: 12px;
+}
+
+.data-pane {
+  float: right;
+  padding: 5px;
+  width: 25%;
+  border: black;
+  border-width: 1px;
+}
+.content-pane {
+  float: left;
+  padding: 5px;
+  width: 30%;
+  border: black;
+  border-width: 1px;
+}
+
+.container {
+
+}
+/**
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+*/
