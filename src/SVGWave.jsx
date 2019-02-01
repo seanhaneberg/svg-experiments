@@ -7,11 +7,11 @@ import MetadataRenderer from './MetadataRenderer';
 const minStroke = 2;
 const maxStroke = 10;
 
-const minPeriodWidth = 100;
-const maxPeriodWidth = 200;
+const minPeriodWidth = 50;
+const maxPeriodWidth = 150;
 
-const minAmplitude = 100;
-const maxAmplitude = 200;
+const minAmplitude = 50;
+const maxAmplitude = 150;
 
 class SVGWave extends Component {
   constructor(props) {
