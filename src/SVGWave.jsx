@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Slider from 'rc-slider';
 import './SVGWave.css'
 import 'rc-slider/assets/index.css';
+import MetadataRenderer from './MetadataRenderer';
 
 const minStroke = 2;
 const maxStroke = 10;
@@ -57,6 +58,8 @@ class SVGWave extends Component {
     const dx2 = dx;
     const dy2 = dy1;
 
+    const metadata = this.state;
+
     const dProp =
       `M
       ${startX} ${startY}
@@ -69,11 +72,6 @@ class SVGWave extends Component {
       ${dx + periodWidth} ${startY}`;
     return (
       // Need to return:
-      //  - A title
-      //  - sliders
-      //  - metadata readouts
-      //  - graphical framing elements
-      //  - content
       <div className="container">
         <div className="slider-pane">
           Stroke
@@ -98,6 +96,9 @@ class SVGWave extends Component {
           />
         </div>
         <div className="data-pane">
+          <MetadataRenderer
+            metadata={metadata}
+          />
         </div>
         <div className="content-pane">
           <svg height={height} width={width}>
