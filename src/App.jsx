@@ -4,14 +4,14 @@ import SVGWave from './SVGWave';
 import './App.css';
 import 'rc-slider/assets/index.css';
 
-const minStroke = 1;
-const maxStroke = 5;
+const minStroke = 2;
+const maxStroke = 10;
 
-const minPeriodWidth = 5;
-const maxPeriodWidth = 100;
+const minPeriodWidth = 100;
+const maxPeriodWidth = 250;
 
-const minAmplitude = 5;
-const maxAmplitude = 100;
+const minAmplitude = 100;
+const maxAmplitude = 200;
 
 class App extends Component {
   constructor(props) {
@@ -45,8 +45,10 @@ class App extends Component {
       />;
     return (
       <div className="App">
-        {svg}
-        <div style={{ padding: 50 }}>
+        <header className="App-header">
+          React SVG Wave
+        </header>
+        <div style={{ padding: 10 }}>
           <br></br>
           Stroke
           <Slider
@@ -69,7 +71,10 @@ class App extends Component {
             onChange={this.handleWidthChange.bind(this)}
           />
         </div>
-      </div>
+        <div style={{ margin: 10 }}>
+          {svg}
+        </div>
+      </div >
     );
   }
 }

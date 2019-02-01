@@ -36,11 +36,12 @@ class SVGWave extends Component {
       ${dx + periodWidth} ${startY}`;
     return (
       <svg height={height} width={width}>
-        <rect height={height} width={width} stroke="black" fill-opacity={0.0}/>
+        <rect height={height} width={width} stoke-width="2" stroke="#afafaf" fillOpacity={0.0}/>
         <path
           d={dProp}
           stroke="black"
           strokeWidth={strokeWidth}
+          strokeLinecap="round"
           fill="transparent"
         />
       </svg>
