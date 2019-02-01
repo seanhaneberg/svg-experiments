@@ -74,21 +74,21 @@ class SVGWave extends Component {
       // Need to return:
       <div className="container">
         <div className="slider-pane">
-          Stroke
+          stroke
           <Slider
             min={minStroke}
             max={maxStroke}
             onChange={this.handleStrokeChange.bind(this)}
           />
           <br></br>
-          Height
+          height
           <Slider
             min={minAmplitude}
             max={maxAmplitude}
             onChange={this.handleAmplitudeChange.bind(this)}
           />
           <br></br>
-          Width
+          width
           <Slider
             min={minPeriodWidth}
             max={maxPeriodWidth}

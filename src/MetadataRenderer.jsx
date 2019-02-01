@@ -11,7 +11,7 @@ class MetadataRenderer extends Component {
         <div key={index}> {key} - {item} </div>
       );
     });
-    return (<div>{items}</div>);
+    return (<div className="metadata-item">{items}</div>);
   }
 }
 
