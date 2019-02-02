@@ -8,14 +8,14 @@
 }
 
 .data-pane {
-  float: right;
+  float: left;
   padding: 5px;
   width: 25%;
   border: black;
   border-width: 1px;
 }
 .content-pane {
-  float: left;
+  float: none;
   padding: 5px;
   width: 30%;
   border: black;
