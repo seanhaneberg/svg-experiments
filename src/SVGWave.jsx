@@ -110,6 +110,7 @@ class SVGWave extends Component {
               fillOpacity={0.0}
             />
             <path
+              class="wave"
               d={dProp}
               stroke="black"
               strokeWidth={strokeWidth}

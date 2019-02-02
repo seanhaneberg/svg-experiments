@@ -25,14 +25,16 @@
 .container {
 
 }
-/**
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.wave {
+  animation: slide 1s ease infinite;
 }
 
-*/
+@keyframes slide {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(150px);
+  }
+}
