@@ -27,7 +27,7 @@
 }
 
 .wave {
-  animation: slide 1s ease infinite;
+  animation: slide 4s ease infinite;
 }
 
 @keyframes slide {
