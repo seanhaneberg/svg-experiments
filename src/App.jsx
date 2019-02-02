@@ -11,7 +11,7 @@ class App extends Component {
           React SVG Wave
         </header>
         <div style={{ margin: 10 }}>
-          <SVGWave numCycles={1}/>
+          <SVGWave/>
         </div>
       </div >
     );
