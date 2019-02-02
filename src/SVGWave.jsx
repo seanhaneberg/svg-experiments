@@ -13,6 +13,9 @@ const maxPeriodWidth = 150;
 const minAmplitude = 50;
 const maxAmplitude = 150;
 
+const minCycles = 1;
+const maxCycles = 7;
+
 class SVGWave extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +24,7 @@ class SVGWave extends Component {
       strokeWidth: minStroke,
       periodWidth: minPeriodWidth,
       amplitude: minAmplitude,
-      numCycles: this.props.numCycles ? this.props.numCycles : 0,
+      numCycles: minCycles,
     };
   }
 
@@ -40,14 +43,14 @@ class SVGWave extends Component {
   handleCyclesChange(val) {
     this.setState({ numCycles: val });
   }
-  
+
   render() {
 
     const amplitude = this.state.amplitude;
     const height = amplitude * 2;
     const periodWidth = this.state.periodWidth;
     const strokeWidth = this.state.strokeWidth;
-    const width = (periodWidth * (this.state.numCycles + 1));
+    const width = (periodWidth * (this.state.numCycles));
     const startX = 0;
     const startY = height / 2;
 
@@ -67,18 +70,14 @@ class SVGWave extends Component {
 
     const numCycles = this.state.numCycles;
 
-    let suffix =
-      `S
-      ${dx + periodWidth} ${startY + (startY - dy1)}
-      ${dx + periodWidth} ${startY}`;
-    for (let i = 0; i < numCycles; i++) {
-      let thisY = (i % 2) ? dy1 : startY + (startY - dy1);
-      if (i > 0) {
-        suffix += `S ${dx + ((i + 1) * periodWidth)} ${thisY} ${dx + (periodWidth * (i + 1))} ${startY}`;
-      }
+    let suffix = '';
 
+    // The first cycle doesn't require a suffix
+    for (let i = 1; i < numCycles; i++) {
+      // Every other cycle needs inverted control points
+      let thisY = (i % 2) ? startY + (startY - dy1) : dy1;
+      suffix += `S ${dx + (i  * periodWidth)} ${thisY} ${dx + (periodWidth * i)} ${startY}`;
     }
-
 
     const dProp =
       `M
@@ -112,8 +111,8 @@ class SVGWave extends Component {
           />
           cycles
           <Slider
-            min={1}
-            max={15}
+            min={minCycles}
+            max={maxCycles}
             onChange={this.handleCyclesChange.bind(this)}
           />
         </div>
