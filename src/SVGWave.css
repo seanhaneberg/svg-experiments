@@ -27,14 +27,14 @@
 }
 
 .wave {
-  animation: slide 4s ease infinite;
+  animation: slide 1s linear infinite;
 }
 
 @keyframes slide {
   0% {
-    transform: translateX(0px);
+    transform: translateX(-50%);
   }
   100% {
-    transform: translateX(150px);
+    transform: translateX(0%);
   }
 }

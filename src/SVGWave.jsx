@@ -13,7 +13,7 @@ const maxPeriodWidth = 150;
 const minAmplitude = 50;
 const maxAmplitude = 150;
 
-const minCycles = 1;
+const minCycles = 3;
 const maxCycles = 7;
 
 class SVGWave extends Component {
@@ -50,7 +50,7 @@ class SVGWave extends Component {
     const height = amplitude * 2;
     const periodWidth = this.state.periodWidth;
     const strokeWidth = this.state.strokeWidth;
-    const width = (periodWidth * (this.state.numCycles));
+    const width = (periodWidth * (this.state.numCycles - 2));
     const startX = 0;
     const startY = height / 2;
 
@@ -131,7 +131,7 @@ class SVGWave extends Component {
               fillOpacity={0.0}
             />
             <path
-              class="wave"
+              className="wave"
               d={dProp}
               stroke="black"
               strokeWidth={strokeWidth}
