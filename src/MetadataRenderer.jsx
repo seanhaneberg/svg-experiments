@@ -11,7 +11,15 @@ class MetadataRenderer extends Component {
         <div key={index}> {key} - {item} </div>
       );
     });
-    return (<div className="metadata-item">{items}</div>);
+
+    const title = this.props.title && items.length > 0 ? <div className="metadata-title">{this.props.title}</div> : null;
+
+    return (
+      <div>
+        {title}
+        <div className="metadata-item">{items}</div>
+      </div>
+    );
   }
 }
 

@@ -6,18 +6,12 @@ import MetadataRenderer from './MetadataRenderer';
 class ComponentMonitor extends Component {
 
   render() {
-    const sliders = [];
     return (
       // Need to return:
       <div className="container">
-        <div className="slider-pane">
-        {sliders}
-        </div>
         <div className="data-pane">
-          Props
-          <MetadataRenderer metadata={this.props.subject.props} />
-          State
-          <MetadataRenderer metadata={this.props.subject.state} />
+          <MetadataRenderer title="props" metadata={this.props.subject.props} />
+          <MetadataRenderer title="state" metadata={this.props.subject.state} />
         </div>
       </div>
     );
