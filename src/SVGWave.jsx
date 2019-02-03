@@ -1,38 +1,14 @@
 import React, { Component } from 'react';
 import './SVGWave.css'
-import ComponentMonitor from './ComponentMonitor';
-
-const minStroke = 2;
-// const maxStroke = 10;
-
-const minPeriodWidth = 50;
-// const maxPeriodWidth = 150;
-
-const minAmplitude = 50;
-// const maxAmplitude = 150;
-
-const minCycles = 3;
-// const maxCycles = 7;
 
 class SVGWave extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      strokeWidth: minStroke,
-      periodWidth: minPeriodWidth,
-      amplitude: minAmplitude,
-      numCycles: minCycles,
-    };
-  }
 
   render() {
-
-    const amplitude = this.state.amplitude;
+    const amplitude = this.props.amplitude;
     const height = amplitude * 2;
-    const periodWidth = this.state.periodWidth;
-    const strokeWidth = this.state.strokeWidth;
-    const width = (periodWidth * (this.state.numCycles - 2));
+    const periodWidth = this.props.periodWidth;
+    const strokeWidth = this.props.strokeWidth;
+    const width = (periodWidth * (this.props.numCycles - 2));
     const startX = 0;
     const startY = height / 2;
 
@@ -48,7 +24,7 @@ class SVGWave extends Component {
     const dx2 = dx;
     const dy2 = dy1;
 
-    const numCycles = this.state.numCycles;
+    const numCycles = this.props.numCycles;
 
     let suffix = '';
 
@@ -71,7 +47,6 @@ class SVGWave extends Component {
     return (
       // Need to return:
       <div className="container">
-        <ComponentMonitor subject={this} />
         <div className="content-pane">
           <svg height={height} width={width}>
             <rect
