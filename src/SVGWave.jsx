@@ -26,22 +26,6 @@ class SVGWave extends Component {
     };
   }
 
-  handleAmplitudeChange(val) {
-    this.setState({ amplitude: val });
-  }
-
-  handleWidthChange(val) {
-    this.setState({ periodWidth: val });
-  }
-
-  handleStrokeChange(val) {
-    this.setState({ strokeWidth: val });
-  }
-
-  handleCyclesChange(val) {
-    this.setState({ numCycles: val });
-  }
-
   render() {
 
     const amplitude = this.state.amplitude;

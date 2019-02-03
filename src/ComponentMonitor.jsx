@@ -3,6 +3,22 @@ import './SVGWave.css'
 import 'rc-slider/assets/index.css';
 import MetadataRenderer from './MetadataRenderer';
 
+// handleAmplitudeChange(val) {
+//   this.setState({ amplitude: val });
+// }
+//
+// handleWidthChange(val) {
+//   this.setState({ periodWidth: val });
+// }
+//
+// handleStrokeChange(val) {
+//   this.setState({ strokeWidth: val });
+// }
+//
+// handleCyclesChange(val) {
+//   this.setState({ numCycles: val });
+// }
+
 class ComponentMonitor extends Component {
 
   render() {
