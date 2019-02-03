@@ -1,23 +1,7 @@
 import React, { Component } from 'react';
 import './SVGWave.css'
 import 'rc-slider/assets/index.css';
-import MetadataRenderer from './MetadataRenderer';
-
-// handleAmplitudeChange(val) {
-//   this.setState({ amplitude: val });
-// }
-//
-// handleWidthChange(val) {
-//   this.setState({ periodWidth: val });
-// }
-//
-// handleStrokeChange(val) {
-//   this.setState({ strokeWidth: val });
-// }
-//
-// handleCyclesChange(val) {
-//   this.setState({ numCycles: val });
-// }
+import MetadataSliders from './MetadataSliders';
 
 class ComponentMonitor extends Component {
 
@@ -25,8 +9,8 @@ class ComponentMonitor extends Component {
     return (
       // Need to return:
       <div className="container">
-        <div className="data-pane">
-          <MetadataRenderer title="props" metadata={this.props.subject.props} />
+        <div className="slider-pane">
+          <MetadataSliders title="props" metadata={this.props.subject.props} />
         </div>
       </div>
     );
