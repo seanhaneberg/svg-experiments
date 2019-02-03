@@ -27,7 +27,6 @@ class ComponentMonitor extends Component {
       <div className="container">
         <div className="data-pane">
           <MetadataRenderer title="props" metadata={this.props.subject.props} />
-          <MetadataRenderer title="state" metadata={this.props.subject.state} />
         </div>
       </div>
     );

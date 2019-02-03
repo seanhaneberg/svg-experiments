@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SVGWave from './SVGWave';
+import SVGWaveController from './SVGWaveController';
 import './App.css';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
           React SVG Wave
         </header>
         <div style={{ margin: 10 }}>
-          <SVGWave/>
+          <SVGWaveController />
         </div>
       </div >
     );
