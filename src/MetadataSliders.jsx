@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import './MetadataRenderer.css'
+import './MetadataSliders.css';
 
 class MetadataSliders extends Component {
 
@@ -23,12 +23,19 @@ class MetadataSliders extends Component {
               return this.onChange(fieldName, curFieldVal, newVal);
             }}
           />
-          <div key={index}> {fieldName} - {curFieldVal} </div>
+          <div> {fieldName} - {curFieldVal} </div>
         </div>
       );
     });
 
-    const title = this.props.title && items.length > 0 ? <div className="metadata-title">{this.props.title}</div> : null;
+    let title = null;
+    if (this.props.title && items.length > 0) {
+      title = (
+        <div className="metadata-title">
+          {this.props.title}
+        </div>
+      );
+    }
 
     return (
       <div>
