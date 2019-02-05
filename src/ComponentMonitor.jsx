@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './SVGWave.css'
-import 'rc-slider/assets/index.css';
 import MetadataSliders from './MetadataSliders';
+import './ComponentMonitor.css'
 
 class ComponentMonitor extends Component {
   constructor(props) {
@@ -18,7 +17,6 @@ class ComponentMonitor extends Component {
 
   render() {
     return (
-      // Need to return:
       <div className="container">
         <div className="slider-pane">
           <MetadataSliders
