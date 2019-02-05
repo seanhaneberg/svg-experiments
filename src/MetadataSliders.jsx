@@ -6,24 +6,25 @@ import './MetadataRenderer.css'
 
 class MetadataSliders extends Component {
 
-  handlePropChange(val) {
-
+  onChange(fieldName, oldVal, newVal) {
+    return this.props.onChange(fieldName, oldVal, newVal);
   }
 
   render() {
     // Process all fields on the metadata object
     const metadata = this.props.metadata ? this.props.metadata : {};
-    const items = Object.keys(metadata).map((key, index) => {
-      const item = metadata[key];
+    const items = Object.keys(metadata).map((fieldName, index) => {
+      const curFieldVal = metadata[fieldName];
       return (
         <div key={index}>
           <Slider
-            key={index}
             min={10}
             max={100}
-            onChange={this.handlePropChange.bind(this)}
+            onChange={(newVal) => { 
+              return this.onChange(fieldName, curFieldVal, newVal);
+            }}
           />
-          <div key={index}> {key} - {item} </div>
+          <div key={index}> {fieldName} - {curFieldVal} </div>
         </div>
       );
     });

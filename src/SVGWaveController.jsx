@@ -27,6 +27,12 @@ class SVGWaveController extends Component {
     };
   }
 
+  onChange(fieldName, oldVal, newVal) {
+    const newState = {};
+    newState[fieldName] = newVal;
+    this.setState(newState);
+  }
+
   render() {
     const wave = (
       <SVGWave
@@ -37,7 +43,12 @@ class SVGWaveController extends Component {
       />
     );
 
-    const monitor = (<ComponentMonitor subject={wave} />);
+    const monitor = (
+      <ComponentMonitor
+        subject={wave}
+        onChange={this.onChange.bind(this)}
+      />
+    );
     return (
       <div>
         {wave}
