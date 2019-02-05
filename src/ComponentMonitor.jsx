@@ -21,9 +21,12 @@ class ComponentMonitor extends Component {
       // Need to return:
       <div className="container">
         <div className="slider-pane">
-          <MetadataSliders title="props"
+          <MetadataSliders
+            title="props"
             onChange={this.props.onChange}
             metadata={this.props.subject.props}
+            mins={this.props.mins}
+            maxes={this.props.maxes}
           />
         </div>
       </div>

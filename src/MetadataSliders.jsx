@@ -3,7 +3,6 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './MetadataRenderer.css'
 
-
 class MetadataSliders extends Component {
 
   onChange(fieldName, oldVal, newVal) {
@@ -18,8 +17,8 @@ class MetadataSliders extends Component {
       return (
         <div key={index}>
           <Slider
-            min={10}
-            max={100}
+            min={this.props.mins[fieldName]}
+            max={this.props.maxes[fieldName]}
             onChange={(newVal) => { 
               return this.onChange(fieldName, curFieldVal, newVal);
             }}

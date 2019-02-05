@@ -4,16 +4,13 @@ import SVGWave from './SVGWave';
 import ComponentMonitor from './ComponentMonitor';
 
 const minStroke = 2;
-// const maxStroke = 10;
-
+const maxStroke = 10;
 const minPeriodWidth = 50;
-// const maxPeriodWidth = 150;
-
+const maxPeriodWidth = 150;
 const minAmplitude = 50;
-// const maxAmplitude = 150;
-
+const maxAmplitude = 150;
 const minCycles = 3;
-// const maxCycles = 7;
+const maxCycles = 7;
 
 class SVGWaveController extends Component {
   constructor(props) {
@@ -46,6 +43,21 @@ class SVGWaveController extends Component {
     const monitor = (
       <ComponentMonitor
         subject={wave}
+
+        mins={{
+          strokeWidth: minStroke,
+          periodWidth: minPeriodWidth,
+          amplitude: minAmplitude,
+          numCycles: minCycles,
+        }}
+
+        maxes={{
+          strokeWidth: maxStroke,
+          periodWidth: maxPeriodWidth,
+          amplitude: maxAmplitude,
+          numCycles: maxCycles,
+        }}
+
         onChange={this.onChange.bind(this)}
       />
     );
