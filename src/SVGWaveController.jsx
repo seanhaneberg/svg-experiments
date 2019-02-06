@@ -33,6 +33,7 @@ class SVGWaveController extends Component {
   render() {
     const wave = (
       <SVGWave
+        showDebug={true}
         strokeWidth={this.state.strokeWidth}
         periodWidth={this.state.periodWidth}
         amplitude={this.state.amplitude}
