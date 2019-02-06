@@ -56,40 +56,42 @@ class SVGWave extends Component {
     }
 
     const debugJSX = [];
-    for (let i = 0; i < numCycles; i++) {
-      const line1StartX = cubicCurveData.startPts[i][0];
-      const line1StartY = cubicCurveData.startPts[i][1];
-      const line1EndX = cubicCurveData.firstControlPts[i][0];
-      const line1EndY = cubicCurveData.firstControlPts[i][1];
-      const line2StartX = cubicCurveData.destination[i][0];
-      const line2StartY = cubicCurveData.destination[i][1];
-      const line2EndX = cubicCurveData.secondControlPts[i][0];
-      const line2EndY = cubicCurveData.secondControlPts[i][1];
-      debugJSX.push(
-        <line
-          key={"line1" + i}
-          x1={line1StartX}
-          y1={line1StartY}
-          x2={line1EndX}
-          y2={line1EndY}
-          stroke="grey"
-        />
-      );
+    if (this.props.showDebug) {
+      for (let i = 0; i < numCycles; i++) {
+        const line1StartX = cubicCurveData.startPts[i][0];
+        const line1StartY = cubicCurveData.startPts[i][1];
+        const line1EndX = cubicCurveData.firstControlPts[i][0];
+        const line1EndY = cubicCurveData.firstControlPts[i][1];
+        const line2StartX = cubicCurveData.destination[i][0];
+        const line2StartY = cubicCurveData.destination[i][1];
+        const line2EndX = cubicCurveData.secondControlPts[i][0];
+        const line2EndY = cubicCurveData.secondControlPts[i][1];
 
-      debugJSX.push(
-        <line
-          key={"line2" + i}
-          x1={line2StartX}
-          y1={line2StartY}
-          x2={line2EndX}
-          y2={line2EndY}
-          stroke="grey"
-        />
-      );
+        debugJSX.push(
+          <line
+            key={"line1" + i}
+            x1={line1StartX}
+            y1={line1StartY}
+            x2={line1EndX}
+            y2={line1EndY}
+            stroke="grey"
+          />
+        );
 
-      debugJSX.push(<circle key={"circle1" + i} r={3} cx={line1EndX} cy={line1EndY} fill="grey" />);
+        debugJSX.push(
+          <line
+            key={"line2" + i}
+            x1={line2StartX}
+            y1={line2StartY}
+            x2={line2EndX}
+            y2={line2EndY}
+            stroke="grey"
+          />
+        );
 
-      debugJSX.push(<circle key={"circle2" + i} r={3} cx={line2EndX} cy={line2EndY} fill="grey" />);
+        debugJSX.push(<circle key={"circle1" + i} r={3} cx={line1EndX} cy={line1EndY} fill="grey" />);
+        debugJSX.push(<circle key={"circle2" + i} r={3} cx={line2EndX} cy={line2EndY} fill="grey" />);
+      }
     }
 
     const dProp =
