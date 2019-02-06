@@ -24,15 +24,34 @@ class SVGWave extends Component {
     const dx2 = dx;
     const dy2 = dy1;
 
+    let cubicCurveData = {
+      startPts: [[startX, startY]],
+      firstControlPts: [[dx1, dy1]],
+      secondControlPts: [[dx2, dy2]],
+      destination: [[dx, dy]],
+    };
+
     const numCycles = this.props.numCycles;
+
+
+    for (let i = 1; i < numCycles; i++) {
+      // Every other cycle needs inverted control points
+      let thisY = (i % 2) ? startY + (startY - dy1) : dy1;
+      let thisX = cubicCurveData.destination[i-1][0];
+      let nextX = thisX + periodWidth;
+      cubicCurveData.startPts[i] = cubicCurveData.destination[i-1];
+      cubicCurveData.firstControlPts[i] = [thisX, thisY];
+      cubicCurveData.secondControlPts[i] = [nextX, thisY];
+      cubicCurveData.destination[i] = [nextX, cubicCurveData.destination[i-1][1]];
+    }
 
     let suffix = '';
 
     // The first cycle doesn't require a suffix
     for (let i = 1; i < numCycles; i++) {
-      // Every other cycle needs inverted control points
-      let thisY = (i % 2) ? startY + (startY - dy1) : dy1;
-      suffix += `S ${dx + (i * periodWidth)} ${thisY} ${dx + (periodWidth * i)} ${startY}`;
+      suffix += `S
+        ${cubicCurveData.secondControlPts[i][0]} ${cubicCurveData.secondControlPts[i][1]}
+        ${cubicCurveData.destination[i][0]} ${cubicCurveData.destination[i][1]}`;
     }
 
     const dProp =
