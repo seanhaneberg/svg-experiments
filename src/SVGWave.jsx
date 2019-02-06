@@ -4,11 +4,12 @@ import './SVGWave.css'
 class SVGWave extends Component {
 
   render() {
+    const svgContentPadding = 10;
     const amplitude = this.props.amplitude;
-    const height = amplitude * 2;
+    const height = amplitude * 2 + svgContentPadding;
     const periodWidth = this.props.periodWidth;
     const strokeWidth = this.props.strokeWidth;
-    const width = (periodWidth * (this.props.numCycles - 2));
+    const width = (periodWidth * (this.props.numCycles - 2)) + svgContentPadding;
     const startX = 0;
     const startY = height / 2;
 
@@ -37,12 +38,12 @@ class SVGWave extends Component {
     for (let i = 1; i < numCycles; i++) {
       // Every other cycle needs inverted control points
       let thisY = (i % 2) ? startY + (startY - dy1) : dy1;
-      let thisX = cubicCurveData.destination[i-1][0];
+      let thisX = cubicCurveData.destination[i - 1][0];
       let nextX = thisX + periodWidth;
-      cubicCurveData.startPts[i] = cubicCurveData.destination[i-1];
+      cubicCurveData.startPts[i] = cubicCurveData.destination[i - 1];
       cubicCurveData.firstControlPts[i] = [thisX, thisY];
       cubicCurveData.secondControlPts[i] = [nextX, thisY];
-      cubicCurveData.destination[i] = [nextX, cubicCurveData.destination[i-1][1]];
+      cubicCurveData.destination[i] = [nextX, cubicCurveData.destination[i - 1][1]];
     }
 
     let suffix = '';
@@ -52,6 +53,43 @@ class SVGWave extends Component {
       suffix += `S
         ${cubicCurveData.secondControlPts[i][0]} ${cubicCurveData.secondControlPts[i][1]}
         ${cubicCurveData.destination[i][0]} ${cubicCurveData.destination[i][1]}`;
+    }
+
+    const debugJSX = [];
+    for (let i = 0; i < numCycles; i++) {
+      const line1StartX = cubicCurveData.startPts[i][0];
+      const line1StartY = cubicCurveData.startPts[i][1];
+      const line1EndX = cubicCurveData.firstControlPts[i][0];
+      const line1EndY = cubicCurveData.firstControlPts[i][1];
+      const line2StartX = cubicCurveData.destination[i][0];
+      const line2StartY = cubicCurveData.destination[i][1];
+      const line2EndX = cubicCurveData.secondControlPts[i][0];
+      const line2EndY = cubicCurveData.secondControlPts[i][1];
+      debugJSX.push(
+        <line
+          key={"line1" + i}
+          x1={line1StartX}
+          y1={line1StartY}
+          x2={line1EndX}
+          y2={line1EndY}
+          stroke="grey"
+        />
+      );
+
+      debugJSX.push(
+        <line
+          key={"line2" + i}
+          x1={line2StartX}
+          y1={line2StartY}
+          x2={line2EndX}
+          y2={line2EndY}
+          stroke="grey"
+        />
+      );
+
+      debugJSX.push(<circle key={"circle1" + i} r={3} cx={line1EndX} cy={line1EndY} fill="grey" />);
+
+      debugJSX.push(<circle key={"circle2" + i} r={3} cx={line2EndX} cy={line2EndY} fill="grey" />);
     }
 
     const dProp =
@@ -68,21 +106,16 @@ class SVGWave extends Component {
       <div className="container">
         <div className="content-pane">
           <svg height={height} width={width}>
-            <rect
-              height={height}
-              width={width}
-              stoke-width="2"
-              stroke="#afafaf"
-              fillOpacity={0.0}
-            />
-            <path
-              className="wave"
-              d={dProp}
-              stroke="black"
-              strokeWidth={strokeWidth}
-              strokeLinecap="round"
-              fill="transparent"
-            />
+            <g className="wave">
+              <path
+                d={dProp}
+                stroke="black"
+                strokeWidth={strokeWidth}
+                strokeLinecap="round"
+                fill="transparent"
+              />
+              {debugJSX}
+            </g>
           </svg>
         </div>
       </div>
