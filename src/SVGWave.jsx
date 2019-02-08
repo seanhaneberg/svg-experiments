@@ -4,12 +4,11 @@ import './SVGWave.css'
 class SVGWave extends Component {
 
   render() {
-    const svgContentPadding = 10;
     const amplitude = this.props.amplitude;
-    const height = amplitude * 2 + svgContentPadding;
     const periodWidth = this.props.periodWidth;
     const strokeWidth = this.props.strokeWidth;
-    const width = (periodWidth * (this.props.numCycles - 2)) + svgContentPadding;
+    const height = this.props.height;
+    const width = this.props.width;
     const startX = 0;
     const startY = height / 2;
 
@@ -108,6 +107,7 @@ class SVGWave extends Component {
       <div className="container">
         <div className="content-pane">
           <svg height={height} width={width}>
+            <rect height={height} width={width} style={{stroke: "grey"}} fillOpacity={0.0}/>
             <g className="wave">
               <path
                 d={dProp}
