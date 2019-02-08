@@ -9,8 +9,12 @@ const minPeriodWidth = 50;
 const maxPeriodWidth = 150;
 const minAmplitude = 50;
 const maxAmplitude = 150;
-const minCycles = 3;
-const maxCycles = 7;
+const minCycles = 2;
+const maxCycles = 20;
+const minHeight = 25;
+const maxHeight = 200;
+const minWidth = 25;
+const maxWidth = 400;
 
 class SVGWaveController extends Component {
   constructor(props) {
@@ -21,6 +25,8 @@ class SVGWaveController extends Component {
       periodWidth: minPeriodWidth,
       amplitude: minAmplitude,
       numCycles: minCycles,
+      height: minHeight,
+      width: minWidth,
     };
   }
 
@@ -33,6 +39,8 @@ class SVGWaveController extends Component {
   render() {
     const wave = (
       <SVGWave
+        height={this.state.height}
+        width={this.state.width}
         showDebug={true}
         strokeWidth={this.state.strokeWidth}
         periodWidth={this.state.periodWidth}
@@ -50,6 +58,8 @@ class SVGWaveController extends Component {
           periodWidth: minPeriodWidth,
           amplitude: minAmplitude,
           numCycles: minCycles,
+          height: minHeight,
+          width: minWidth,
         }}
 
         maxes={{
@@ -57,6 +67,8 @@ class SVGWaveController extends Component {
           periodWidth: maxPeriodWidth,
           amplitude: maxAmplitude,
           numCycles: maxCycles,
+          height: maxHeight,
+          width: maxWidth,
         }}
 
         onChange={this.onChange.bind(this)}
