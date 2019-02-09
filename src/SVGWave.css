@@ -1,0 +1,27 @@
+.data-pane {
+  float: left;
+  padding: 5px;
+  width: 25%;
+  border: black;
+  border-width: 1px;
+}
+.content-pane {
+  float: none;
+  padding: 5px;
+  width: 30%;
+  border: black;
+  border-width: 1px;
+}
+
+.wave {
+  animation: slide 1s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

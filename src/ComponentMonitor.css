@@ -1,0 +1,8 @@
+.slider-pane {
+  float: left;
+  padding: 5px;
+  width: 30%;
+  text-align: right;
+  color: #777777;
+  font-size: 12px;
+}
