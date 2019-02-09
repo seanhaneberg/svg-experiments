@@ -11,9 +11,9 @@ const minAmplitude = 50;
 const maxAmplitude = 150;
 const minCycles = 2;
 const maxCycles = 20;
-const minHeight = 25;
+const minHeight = 75;
 const maxHeight = 200;
-const minWidth = 25;
+const minWidth = 75;
 const maxWidth = 400;
 
 class SVGWaveController extends Component {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './SVGWave.css'
 
 class SVGWave extends Component {
-
   render() {
     const amplitude = this.props.amplitude;
     const periodWidth = this.props.periodWidth;
