@@ -10,6 +10,10 @@ class ComponentMonitor extends Component {
     let sliderProps = {};
     let checkboxProps = {};
 
+    if (!this.props.subject) {
+      return null;
+    }
+
     Object.keys(this.props.subject.props).map((fieldName) => {
       const val = this.props.subject.props[fieldName];
       const type = (typeof val);

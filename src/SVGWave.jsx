@@ -8,7 +8,7 @@ class SVGWave extends Component {
     const strokeWidth = this.props.strokeWidth;
     const height = this.props.height;
     const width = this.props.width;
-    const startX = 0;
+    const startX = this.props.startXOffset ? this.props.startXOffset : 0;
     const startY = height / 2;
 
     // 1st control pt
@@ -107,7 +107,6 @@ class SVGWave extends Component {
         <div className="content-pane">
           <svg height={height} width={width}>
             <rect height={height} width={width} style={{stroke: "grey"}} fillOpacity={0.0}/>
-            <g className="wave">
               <path
                 d={dProp}
                 stroke="black"
@@ -116,7 +115,6 @@ class SVGWave extends Component {
                 fill="transparent"
               />
               {debugJSX}
-            </g>
           </svg>
         </div>
       </div>
