@@ -8,7 +8,7 @@ class SVGWave extends Component {
     const strokeWidth = this.props.strokeWidth;
     const height = this.props.height;
     const width = this.props.width;
-    const startX = 0;
+    const startX = this.props.startXOffset ? this.props.startXOffset : 0;
     const startY = height / 2;
 
     // 1st control pt
