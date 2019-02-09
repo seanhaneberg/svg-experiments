@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './SVGWave.css'
 import SVGWave from './SVGWave';
 import ComponentMonitor from './ComponentMonitor';
+import { Spring, config } from 'react-spring/renderprops';
 
 const minStroke = 2;
 const maxStroke = 10;
@@ -15,6 +16,8 @@ const minHeight = 75;
 const maxHeight = 200;
 const minWidth = 75;
 const maxWidth = 400;
+const minXOffset = -200;
+const maxXOffset = 200;
 
 class SVGWaveController extends Component {
   constructor(props) {
@@ -28,6 +31,7 @@ class SVGWaveController extends Component {
       height: minHeight,
       width: minWidth,
       showDebug: false,
+      startXOffset: 0,
     };
   }
 
@@ -38,47 +42,76 @@ class SVGWaveController extends Component {
   }
 
   render() {
-    const wave = (
-      <SVGWave
-        height={this.state.height}
-        width={this.state.width}
-        showDebug={this.state.showDebug}
-        strokeWidth={this.state.strokeWidth}
-        periodWidth={this.state.periodWidth}
-        amplitude={this.state.amplitude}
-        numCycles={this.state.numCycles}
-      />
+    const springWave = (
+      <Spring
+        from={{ offset: -this.state.periodWidth }}
+        to={{ offset: this.state.periodWidth }}
+        delay={1000}
+        onRest={(item) => {
+          this.setState({ startXOffset: item.offset });
+        }}
+      >
+        {(animatedProps) => {
+          const wave = <SVGWave
+            height={this.state.height}
+            width={this.state.width}
+            showDebug={this.state.showDebug}
+            strokeWidth={this.state.strokeWidth}
+            periodWidth={this.state.periodWidth}
+            amplitude={this.state.amplitude}
+            numCycles={this.state.numCycles}
+            startXOffset={animatedProps.offset}
+          />;
+
+          const monitor = <ComponentMonitor
+            subject={wave}
+            mins={{
+              strokeWidth: minStroke,
+              periodWidth: minPeriodWidth,
+              amplitude: minAmplitude,
+              numCycles: minCycles,
+              height: minHeight,
+              width: minWidth,
+              startXOffset: minXOffset,
+            }}
+
+            maxes={{
+              strokeWidth: maxStroke,
+              periodWidth: maxPeriodWidth,
+              amplitude: maxAmplitude,
+              numCycles: maxCycles,
+              height: maxHeight,
+              width: maxWidth,
+              startXOffset: maxXOffset,
+            }}
+
+            onChange={this.onChange.bind(this)}
+          />;
+          return (
+            <div>
+              {wave}
+              {monitor}
+            </div>
+          );
+        }}
+      </Spring>
     );
 
-    const monitor = (
-      <ComponentMonitor
-        subject={wave}
-
-        mins={{
-          strokeWidth: minStroke,
-          periodWidth: minPeriodWidth,
-          amplitude: minAmplitude,
-          numCycles: minCycles,
-          height: minHeight,
-          width: minWidth,
-        }}
-
-        maxes={{
-          strokeWidth: maxStroke,
-          periodWidth: maxPeriodWidth,
-          amplitude: maxAmplitude,
-          numCycles: maxCycles,
-          height: maxHeight,
-          width: maxWidth,
-        }}
-
-        onChange={this.onChange.bind(this)}
-      />
-    );
     return (
       <div>
-        {wave}
-        {monitor}
+        <Spring
+          from={{ opacity: 0 }}
+          to={{ opacity: 1 }}
+          delay={200}
+          config={config.molasses}>
+          {(props) => {
+            return (<div
+              style={props}>
+              {springWave}
+            </div>
+            );
+          }}
+        </Spring>
       </div>
     );
   }
