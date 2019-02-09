@@ -44,24 +44,24 @@ class SVGWaveController extends Component {
   render() {
     const springWave = (
       <Spring
-        from={{ offset: -this.state.periodWidth }}
-        to={{ offset: this.state.periodWidth }}
-        delay={1000}
+        to={{
+          strokeWidth: this.state.strokeWidth,
+          periodWidth: this.state.periodWidth,
+          amplitude: this.state.amplitude,
+          numCycles: this.state.numCycles,
+          height: this.state.height,
+          width: this.state.width,
+          startXOffset: this.state.startXOffset,
+        }}
+        delay={100}
         onRest={(item) => {
-          this.setState({ startXOffset: item.offset });
+          this.setState({ startXOffset: item.startXOffset });
         }}
       >
         {(animatedProps) => {
-          const wave = <SVGWave
-            height={this.state.height}
-            width={this.state.width}
-            showDebug={this.state.showDebug}
-            strokeWidth={this.state.strokeWidth}
-            periodWidth={this.state.periodWidth}
-            amplitude={this.state.amplitude}
-            numCycles={this.state.numCycles}
-            startXOffset={animatedProps.offset}
-          />;
+
+          const props = { ...animatedProps, showDebug: this.state.showDebug };
+          const wave = <SVGWave {...props} />
 
           const monitor = <ComponentMonitor
             subject={wave}
