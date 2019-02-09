@@ -12,16 +12,3 @@
   border: black;
   border-width: 1px;
 }
-
-.wave {
-  animation: slide 1s linear infinite;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}

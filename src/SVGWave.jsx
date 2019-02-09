@@ -107,7 +107,6 @@ class SVGWave extends Component {
         <div className="content-pane">
           <svg height={height} width={width}>
             <rect height={height} width={width} style={{stroke: "grey"}} fillOpacity={0.0}/>
-            <g className="wave">
               <path
                 d={dProp}
                 stroke="black"
@@ -116,7 +115,6 @@ class SVGWave extends Component {
                 fill="transparent"
               />
               {debugJSX}
-            </g>
           </svg>
         </div>
       </div>
