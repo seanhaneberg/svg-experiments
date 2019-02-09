@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MetadataSliders from './MetadataSliders';
 import './ComponentMonitor.css'
+import MetadataCheckboxes from './MetadataCheckboxes';
 
 class ComponentMonitor extends Component {
 
@@ -26,7 +27,6 @@ class ComponentMonitor extends Component {
       return null;
     });
 
-
     return (
       <div className="container">
         <div className="slider-pane">
@@ -38,6 +38,10 @@ class ComponentMonitor extends Component {
             maxes={this.props.maxes}
           />
         </div>
+        <MetadataCheckboxes
+          onChange={this.props.onChange}
+          metadata={checkboxProps}
+        />
       </div>
     );
   }

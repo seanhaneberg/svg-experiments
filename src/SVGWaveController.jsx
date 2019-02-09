@@ -27,6 +27,7 @@ class SVGWaveController extends Component {
       numCycles: minCycles,
       height: minHeight,
       width: minWidth,
+      showDebug: false,
     };
   }
 
@@ -41,7 +42,7 @@ class SVGWaveController extends Component {
       <SVGWave
         height={this.state.height}
         width={this.state.width}
-        showDebug={true}
+        showDebug={this.state.showDebug}
         strokeWidth={this.state.strokeWidth}
         periodWidth={this.state.periodWidth}
         amplitude={this.state.amplitude}
