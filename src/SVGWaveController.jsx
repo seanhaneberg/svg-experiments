@@ -59,7 +59,9 @@ class SVGWaveController extends Component {
         }}
       >
         {(animatedProps) => {
-          const wave = <SVGWave {...animatedProps} />;
+
+          const props = { ...animatedProps, showDebug: this.state.showDebug };
+          const wave = <SVGWave {...props} />
 
           const monitor = <ComponentMonitor
             subject={wave}
